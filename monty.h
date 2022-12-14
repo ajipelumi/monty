@@ -1,12 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  *
@@ -41,6 +35,17 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* declaring global variables */
+extern int lineNo;
+extern stack_t *stack;
 
+/**
+ * functions declarations goes here
+ * Name of source code for each function should be above the function.
+ * e.g.
+ * monty.c
+ * int main(int argc, char *argv);
+ */
+int p
 
 #endif
