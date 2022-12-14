@@ -58,4 +58,8 @@ extern char *curLine;
  * push.c */
 void push(stack_t **stack, unsigned int line_number);
 
+/* linked_list.c */
+stack_t *add_dnodeint_end(stack_t **head, int n);
+void free_stack_tlist(stack_t *head);
+
 #endif

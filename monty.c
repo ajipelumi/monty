@@ -23,6 +23,7 @@ char *curLine = NULL;
  */
 int main(int argc, char *argv[])
 {
+	stack_t **stack = NULL;
 	ssize_t ret = 0;
 	int i = 0;
 	unsigned int line_number = 0;
