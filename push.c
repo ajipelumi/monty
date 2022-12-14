@@ -1,6 +1,8 @@
-#include <stdlib.h>
-
 #include "monty.h"
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 /**
  * push - push a number on the stack
@@ -13,7 +15,6 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *store;
 	char *cmd;
 	int num;
 
@@ -21,17 +22,17 @@ void push(stack_t **stack, unsigned int line_number)
 	cmd = strtok(NULL, " ");
 	if (cmd == NULL) /* no argument */
 	{
-		dprintf("L%u: usage: push integer\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 		free(curLine);
 		exit(EXIT_FAILURE);
 	}
 	num = strtol(cmd, NULL, 10); /* convert string to integer */
 	if (num == 0) /* no digits */
 	{
-		dprintf("L%u: usage: push integer\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 		free(curLine);
 		exit(EXIT_FAILURE);
 	}
 	free(curLine);
-	store = add_dnodeint_end(stack, num); /* add to list */
+	add_dnodeint_end(stack, num); /* add to list */
 }

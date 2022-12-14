@@ -8,10 +8,10 @@
  * @head: pointer to the list
  * @n: node element
  *
- * Return: the address of the new element, or NULL if it failed
+ * Return: void
  */
 
-stack_t *add_dnodeint_end(stack_t **head, int n)
+void *add_dnodeint_end(stack_t **head, int n)
 {
 	stack_t *new = NULL, *temp;
 
@@ -21,7 +21,7 @@ stack_t *add_dnodeint_end(stack_t **head, int n)
 		new = malloc(sizeof(stack_t));
 		if (new == NULL) /* if malloc fails */
 		{
-			return (NULL);
+			return;
 		}
 		new->n = n; /* assign struct element */
 		new->next = NULL;
@@ -31,7 +31,7 @@ stack_t *add_dnodeint_end(stack_t **head, int n)
 		if (temp == NULL) /* no list exists */
 		{
 			*head = new; /* head now points to first node */
-			return (*head);
+			return;
 		}
 		/* temp goes through list until temp->next is null */
 		while (temp->next != NULL)
@@ -41,7 +41,6 @@ stack_t *add_dnodeint_end(stack_t **head, int n)
 		temp->next = new; /* temp'/'*head points to new */
 		new->prev = temp; /* prev points to temp'/'*head */
 	}
-	return (new); /* return new node */
 }
 
 /**

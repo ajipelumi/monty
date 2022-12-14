@@ -46,20 +46,11 @@ typedef struct instruction_s
 extern FILE *file;
 extern char *curLine;
 
-/**
- * functions declarations goes here
- * Name of source code for each function should be above the function.
- * e.g.
- * monty.c
- * int main(int argc, char *argv);
- */
-
-/*
- * push.c */
+/* push.c */
 void push(stack_t **stack, unsigned int line_number);
 
 /* linked_list.c */
-stack_t *add_dnodeint_end(stack_t **head, int n);
+void *add_dnodeint_end(stack_t **head, int n);
 void free_stack_tlist(stack_t *head);
 
 #endif
