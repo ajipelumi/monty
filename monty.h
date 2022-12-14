@@ -1,7 +1,11 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+/* including stdio.h for FILE type */
 #include <stdio.h>
+
+/* macros */
+#define MEMERR STDERR_FILENO, "Error: malloc failed\n"
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -51,6 +55,6 @@ extern char *curLine;
 
 /*
  * push.c */
-void push(stack_t *stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
 
 #endif

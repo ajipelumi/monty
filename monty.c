@@ -1,5 +1,5 @@
 #include <fcntl.h>
-#include <strings.h>
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	size_t bytes = 0;
 	stack_t **stack = NULL;
 	char *cmd;
-	instruction_t *instructions = {{"push", &push}, {NULL, NULL}}
+	instruction_t instructions[] = {{"push", push}, {NULL, NULL}};
 
 	/* check if right arguments was passed and open file */
 	initArgs(argc, argv);
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 		else if (ret == -1)
 			break;
 
-		cmd = strtok(curLine, " \n");
+		cmd = strtok(curLine, " ,\n");
 		if (cmd == NULL)
 		{/*empty line*/
 			free(curLine);
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 			continue;
 		}
 
-		while (instructions[i] != NULL)
+		while (instructions[i].opcode != NULL)
 		{
 			if (strcmp(instructions[i].opcode, cmd) == 0)/*opcode found */
 			{
@@ -58,10 +58,10 @@ int main(int argc, char *argv[])
 			}
 
 			i++;
-			if (instructions[i] == NULL)
+			if (instructions[i].opcode == NULL)
 			{
-				dprintf(STDERR_FILENO, "Error\n");
-				ret = -1;/*exit external loop */
+				dprintf(STDERR_FILENO, "%u: unknown instruction %s", line_number, cmd);
+				exit(EXIT_FAILURE);
 			}
 		}
 
