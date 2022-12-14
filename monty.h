@@ -57,4 +57,7 @@ extern char *curLine;
  * push.c */
 void push(stack_t **stack, unsigned int line_number);
 
+/* functions.c */
+void _strchr(char *str, char unsetChr, char setChr);
+
 #endif

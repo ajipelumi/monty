@@ -33,15 +33,18 @@ int main(int argc, char *argv[])
 	initArgs(argc, argv);
 
 	/* parsing through file line by line... */
-	do {
+	while (1) /* loop until eof is encountered */
+	{
 		line_number++;
 		ret = getline(&curLine, &bytes, file);
+		/* Add if statement to check for memory error */
 		if (ret == 0)
 			continue;/* empty line */
 		else if (ret == -1)
-			break;
+			break;/* EOF */
 
-		cmd = strtok(curLine, " ,\n");
+		_strchr(curLine, '\n', ' '); /* replace \n with ' ' */
+		cmd = strtok(curLine, " ");
 		if (cmd == NULL)
 		{/*empty line*/
 			free(curLine);
@@ -65,7 +68,7 @@ int main(int argc, char *argv[])
 			}
 		}
 
-	} while (ret != -1);
+	}
 
 	fclose(file);
 
