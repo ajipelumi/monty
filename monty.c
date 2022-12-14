@@ -1,6 +1,3 @@
-/* defining _GNU_SOURCE for getline */
-#define _GNU_SOURCE
-#include <stdio.h>
 #include "monty.h"
 #include <string.h>
 #include <stdlib.h>
@@ -28,7 +25,7 @@ int main(int argc, char *argv[])
 	size_t bytes = 0;
 	stack_t **stack = NULL;
 	char *cmd;
-	instruction_t instructions[] = {{"push", push}, {NULL, NULL}};
+	instruction_t instructions[] = {{"push", push}, {"pint", pint}, {NULL, NULL}};
 
 	/* check if right arguments was passed and open file */
 	initArgs(argc, argv);
@@ -64,7 +61,7 @@ int main(int argc, char *argv[])
 			i++;
 			if (instructions[i].opcode == NULL)
 			{
-				dprintf(STDERR_FILENO, "%u: unknown instruction %s", line_number, cmd);
+				dprintf(STDERR_FILENO, "%u: unknown instruction %s\n", line_number, cmd);
 				exit(EXIT_FAILURE);
 			}
 		}

@@ -1,6 +1,10 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+/* define macros for dprintf */
+#define _GNU_SOURCE
+#define _POSIX_C_SOURCE  200809L
+
 /* including stdio.h for FILE type */
 #include <stdio.h>
 
@@ -59,5 +63,14 @@ void push(stack_t **stack, unsigned int line_number);
 
 /* functions.c */
 void _strchr(char *str, char unsetChr, char setChr);
+
+/* stack.h */
+void stackPush(stack_t **stack, int num);
+void stackPop(stack_t **stack);
+void stackFree(stack_t **stack);
+stack_t *getTail(stack_t **stack);
+
+/* pint.c */
+void pint(stack_t **stack, unsigned int line_numeer);
 
 #endif
