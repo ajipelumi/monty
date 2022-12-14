@@ -1,3 +1,5 @@
+#include "monty.h"
+
 #include <fcntl.h>
 #include <string.h>
 #include <stdio.h>
@@ -6,11 +8,10 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include "monty.h"
 
 void initArgs(int argc, char *argv[]);
 FILE *file;
-	char *curLine = NULL;
+char *curLine = NULL;
 
 /**
  * main - entry point for monty interpreter
@@ -22,10 +23,10 @@ FILE *file;
  */
 int main(int argc, char *argv[])
 {
-	int ret = 0, i = 0;
+	ssize_t ret = 0;
+	int i = 0;
 	unsigned int line_number = 0;
 	size_t bytes = 0;
-	stack_t **stack = NULL;
 	char *cmd;
 	instruction_t instructions[] = {{"push", push}, {NULL, NULL}};
 
@@ -36,14 +37,14 @@ int main(int argc, char *argv[])
 	do {
 		line_number++;
 		ret = getline(&curLine, &bytes, file);
-		if (ret == 0)
-			continue;/* empty line */
-		else if (ret == -1)
+		if (ret == 0) /* empty line */
+			continue; /* go to the next line */
+		else if (ret == -1) /* failure to read a line */
 			break;
 
 		cmd = strtok(curLine, " ,\n");
-		if (cmd == NULL)
-		{/*empty line*/
+		if (cmd == NULL) /*empty line*/
+		{
 			free(curLine);
 			curLine = NULL;
 			continue;
@@ -60,37 +61,41 @@ int main(int argc, char *argv[])
 			i++;
 			if (instructions[i].opcode == NULL)
 			{
-				dprintf(STDERR_FILENO, "%u: unknown instruction %s", line_number, cmd);
+				dprintf(STDERR_FILENO, "%u: unknown instruction %s\n", line_number, cmd);
 				exit(EXIT_FAILURE);
 			}
 		}
 
 	} while (ret != -1);
 
-	fclose(file);
+	fclose(file); /* close file before exiting */
 
 	return (EXIT_SUCCESS);
 }
 
 /**
  * initArgs - initialize arguments
+ *
  * @argc: argument count
  * @argv: argument vector
+ *
+ * Return: void
  */
+
 void initArgs(int argc, char *argv[])
 {
 
 	if (argc != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
-			exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
-	/* close file before exiting */
+	/* open file */
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
-			exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 }

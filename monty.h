@@ -2,6 +2,7 @@
 #define MONTY_H
 
 /* including stdio.h for FILE type */
+#define _GNU_SOURCE
 #include <stdio.h>
 
 /* macros */
