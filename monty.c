@@ -1,13 +1,19 @@
 #include "monty.h"
+<<<<<<< HEAD
 
 #include <fcntl.h>
+=======
+>>>>>>> origin/abdul
 #include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+<<<<<<< HEAD
 
+=======
+#include <fcntl.h>
+>>>>>>> origin/abdul
 
 void initArgs(int argc, char *argv[]);
 FILE *file;
@@ -29,15 +35,17 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 0;
 	size_t bytes = 0;
 	char *cmd;
-	instruction_t instructions[] = {{"push", push}, {NULL, NULL}};
+	instruction_t instructions[] = {{"push", push}, {"pint", pint}, {NULL, NULL}};
 
 	/* check if right arguments was passed and open file */
 	initArgs(argc, argv);
 
 	/* parsing through file line by line... */
-	do {
+	while (1) /* loop until eof is encountered */
+	{
 		line_number++;
 		ret = getline(&curLine, &bytes, file);
+<<<<<<< HEAD
 		if (ret == 0) /* empty line */
 			continue; /* go to the next line */
 		else if (ret == -1) /* failure to read a line */
@@ -46,6 +54,18 @@ int main(int argc, char *argv[])
 		cmd = strtok(curLine, " ,\n");
 		if (cmd == NULL) /*empty line*/
 		{
+=======
+		/* Add if statement to check for memory error */
+		if (ret == 0)
+			continue;/* empty line */
+		else if (ret == -1)
+			break;/* EOF */
+
+		_strchr(curLine, '\n', ' '); /* replace \n with ' ' */
+		cmd = strtok(curLine, " ");
+		if (cmd == NULL)
+		{/*empty line*/
+>>>>>>> origin/abdul
 			free(curLine);
 			curLine = NULL;
 			continue;
@@ -67,7 +87,7 @@ int main(int argc, char *argv[])
 			}
 		}
 
-	} while (ret != -1);
+	}
 
 	fclose(file); /* close file before exiting */
 

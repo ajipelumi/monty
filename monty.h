@@ -1,12 +1,16 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+/* define macros for dprintf */
+#define _GNU_SOURCE
+#define _POSIX_C_SOURCE  200809L
+
 /* including stdio.h for FILE type */
 #define _GNU_SOURCE
 #include <stdio.h>
 
 /* macros */
-#define MEMERR STDERR_FILENO, "Error: malloc failed\n"
+/* #define MEMERR STDERR_FILENO, "Error: malloc failed\n" */
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -49,8 +53,25 @@ extern char *curLine;
 /* push.c */
 void push(stack_t **stack, unsigned int line_number);
 
+/* pall.c */
+void pall(stack_t **stack, unsigned int line_number);
+
+<<<<<<< HEAD
 /* linked_list.c */
 void *add_dnodeint_end(stack_t **head, int n);
 void free_stack_tlist(stack_t *head);
+=======
+/* functions.c */
+void _strchr(char *str, char unsetChr, char setChr);
+
+/* stack.h */
+void stackPush(stack_t **stack, int num);
+void stackPop(stack_t **stack);
+void stackFree(stack_t **stack);
+stack_t *getTail(stack_t **stack);
+
+/* pint.c */
+void pint(stack_t **stack, unsigned int line_numeer);
+>>>>>>> origin/abdul
 
 #endif
