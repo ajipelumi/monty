@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 /* macros */
-#define MEMERR STDERR_FILENO, "Error: malloc failed\n"
+/* #define MEMERR STDERR_FILENO, "Error: malloc failed\n" */
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

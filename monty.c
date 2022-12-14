@@ -1,12 +1,13 @@
-#include <fcntl.h>
-#include <string.h>
+/* defining _GNU_SOURCE for getline */
+#define _GNU_SOURCE
 #include <stdio.h>
+#include "monty.h"
+#include <string.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
-
-#include "monty.h"
+#include <fcntl.h>
 
 void initArgs(int argc, char *argv[]);
 FILE *file;
