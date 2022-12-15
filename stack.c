@@ -1,6 +1,8 @@
 #include "monty.h"
 
 #include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
 /**
  * stackPush - add a number on the stack
@@ -45,6 +47,7 @@ void stackPush(stack_t **stack, int num)
  * stackPop - remove the last item on the stack
  * @stack: stack
  */
+
 void stackPop(stack_t **stack)
 {
 	stack_t *node;
@@ -67,6 +70,7 @@ void stackPop(stack_t **stack)
  * Return: the tail of the stack
  * NULL: empty stack
  */
+
 stack_t *getTail(stack_t **stack)
 {
 	stack_t *node;
@@ -85,6 +89,7 @@ stack_t *getTail(stack_t **stack)
  * stackFree - free the stack.
  * @stack: stack:
  */
+
 void stackFree(stack_t **stack)
 {
 	stack_t *node, *temp;
