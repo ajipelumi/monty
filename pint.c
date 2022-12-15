@@ -1,9 +1,5 @@
 #include "monty.h"
 
-/* define macros for dprintf */
-#define _GNU_SOURCE
-#define _POSIX_C_SOURCE  200809L
-
 #include <stdlib.h>
 #include <unistd.h>
 
