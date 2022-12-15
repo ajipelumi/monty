@@ -91,9 +91,9 @@ void stackFree(stack_t **stack)
 
 	while (node != NULL)
 	{
-					temp = node;
-					node = node->next;
-					free(temp);
-					}
+		temp = node;
+		node = node->next;
+		free(temp);
+	}
 
 }

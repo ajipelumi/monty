@@ -52,6 +52,7 @@ extern char *curLine;
 
 /* push.c */
 void push(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 
 /* pall.c */
 void pall(stack_t **stack, unsigned int line_number);

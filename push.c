@@ -37,3 +37,21 @@ void push(stack_t **stack, unsigned int line_number)
 	free(curLine);
 	add_dnodeint_end(stack, num); /* add to list */
 }
+
+/**
+ * pop - removes the top element of the stack
+ * @stack: stack
+ * @line_number: line number to use while printing errors
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL || *stack == NULL)
+	{
+		dprintf(STDERR_FILENO, "%u: can't pop an empty stack\n", line_number);
+		free(curLine);
+		stackFree(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	stackPop(stack);
+}
