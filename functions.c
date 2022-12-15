@@ -1,4 +1,6 @@
 #include "monty.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 /**
  * _strchr - replaces a character in a string with another character
@@ -14,5 +16,32 @@ void _strchr(char *str, char unsetChr, char setChr)
 	{
 		if (str[i] == unsetChr)
 			str[i] = setChr;
+	}
+}
+
+/**
+ * initArgs - initialize arguments
+ *
+ * @argc: argument count
+ * @argv: argument vector
+ *
+ * Return: void
+ */
+
+void initArgs(int argc, char *argv[])
+{
+
+	if (argc != 2)
+	{
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+
+	/* open file */
+	file = fopen(argv[1], "r");
+	if (file == NULL)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
 	}
 }

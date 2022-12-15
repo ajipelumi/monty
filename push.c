@@ -25,7 +25,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (cmd == NULL) /* no argument */
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
-		free(curLine);
+		stackFree(stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -33,7 +33,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (ntr == cmd || *ntr != '\0') /* no digits */
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
-		free(curLine);
+		stackFree(stack);
 		exit(EXIT_FAILURE);
 	}
 	stackPush(stack, num); /* add to list */
@@ -50,7 +50,6 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", line_number);
-		free(curLine);
 		stackFree(stack);
 		exit(EXIT_FAILURE);
 	}
