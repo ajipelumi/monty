@@ -49,6 +49,7 @@ typedef struct instruction_s
 /* declaring global variables */
 extern FILE *file;
 extern char *curLine;
+extern int fileFlag;
 
 /* push.c */
 void push(stack_t **stack, unsigned int line_number);
