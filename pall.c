@@ -23,6 +23,7 @@ void pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", node->n); /* print element */
 		node = node->prev; /* go to previous node */
 	}
+	printf("%d\n", node->n); /* print bottom element on the stack */
 
 	free(curLine);
 	curLine = NULL;
