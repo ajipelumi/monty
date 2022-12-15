@@ -76,4 +76,7 @@ void pint(stack_t **stack, unsigned int line_number);
 /* nop.c */
 void nop(stack_t **stack, unsigned int line_number);
 
+/* calc.c */
+void add(stack_t **stack, unsigned int line_number);
+
 #endif

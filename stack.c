@@ -57,10 +57,14 @@ void stackPop(stack_t **stack)
 		return;
 
 	node = getTail(stack);
-	if (node->prev != NULL)
+	if (node->prev != NULL) /* more than one element on the stack */
+	{
 		node->prev->next = NULL;
-	else if (node->prev == NULL)
+	}
+	else if (node->prev == NULL) /* one element on the stack */
+	{
 		*stack = NULL;
+	}
 	free(node);
 }
 
@@ -77,13 +81,16 @@ stack_t *getTail(stack_t **stack)
 	stack_t *node;
 
 	if (stack == NULL || *stack == NULL)
+	{
 		return (NULL);
+	}
 
 	node = *stack;
 	while (node->next != NULL)
-		node = node->next;
-
-	return (node);
+	{
+		node = node->next; /* loop until last node */
+	}
+	return (node); /* return last node */
 }
 
 /**
@@ -96,17 +103,17 @@ void stackFree(stack_t **stack)
 	stack_t *node, *temp;
 
 	if (stack == NULL || *stack == NULL)
+	{
 		return;
+	}
 
 	node = *stack;
-
-	while (node != NULL)
+	while (node != NULL) /* loop through stack */
 	{
 		temp = node;
 		node = node->next;
 		free(temp);
 	}
-
 }
 
 /**
