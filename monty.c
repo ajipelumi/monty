@@ -81,7 +81,6 @@ int main(int argc, char *argv[])
  * postMain - free curLine and close file
  */
 
-void postMain(void) __attribute__((destructor));
 void postMain(void)
 {
 	free(curLine);
