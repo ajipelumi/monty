@@ -5,7 +5,8 @@
 #include <unistd.h>
 
 /**
- * pall -  prints all the values on the stack, starting from the top of the stack
+ * pall - prints all the values on the stack, starting
+ * from the top of the stack
  *
  * @stack: stack
  * @line_number: line number to use while printing error
@@ -19,7 +20,7 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	(void)line_number; /* unused parameter */
 	node = getTail(stack); /* get the top node */
-	while (node->prev != NULL)
+	while (node != NULL)
 	{
 		printf("%d\n", node->n); /* print element */
 		node = node->prev; /* go to previous node */
@@ -31,6 +32,7 @@ void pall(stack_t **stack, unsigned int line_number)
  * @stack: stack
  * @line_number: line number to use for printing error
  */
+
 void pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tail;

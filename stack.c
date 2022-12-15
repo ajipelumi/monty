@@ -1,22 +1,30 @@
 #include "monty.h"
 
 #include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
 /**
  * stackPush - add a number on the stack
  * @stack: stack
  * @num: number to add on the stack
  */
+
 void stackPush(stack_t **stack, int num)
 {
 	stack_t *newNode, *hold;
 
 	if (stack == NULL)
+	{
 		return;
+	}
 
 	newNode = malloc(sizeof(*newNode));
-	if (newNode == NULL)
-		return;
+	if (newNode == NULL) /* malloc fails */
+	{
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	newNode->n = num;
 	newNode->next = NULL;
 	newNode->prev = NULL;
@@ -40,6 +48,7 @@ void stackPush(stack_t **stack, int num)
  * stackPop - remove the last item on the stack
  * @stack: stack
  */
+
 void stackPop(stack_t **stack)
 {
 	stack_t *node;
@@ -62,6 +71,7 @@ void stackPop(stack_t **stack)
  * Return: the tail of the stack
  * NULL: empty stack
  */
+
 stack_t *getTail(stack_t **stack)
 {
 	stack_t *node;
@@ -80,6 +90,7 @@ stack_t *getTail(stack_t **stack)
  * stackFree - free the stack.
  * @stack: stack:
  */
+
 void stackFree(stack_t **stack)
 {
 	stack_t *node, *temp;
@@ -96,4 +107,31 @@ void stackFree(stack_t **stack)
 		free(temp);
 	}
 
+}
+
+/**
+ * stackCount - get the number of elements in stack
+ *
+ * @stack: stack list
+ *
+ * Return: number of elements in the list
+ */
+
+int stackCount(stack_t **stack)
+{
+	stack_t *temp;
+	int count = 0;
+
+	if (stack == NULL || *stack == NULL) /* empty stack */
+	{
+		return (count);
+	}
+
+	temp = *stack;
+	while (temp != NULL)
+	{
+		count++; /* increase count by 1 */
+		temp = temp->next; /* go to the next node */
+	}
+	return (count);
 }

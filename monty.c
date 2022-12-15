@@ -28,8 +28,9 @@ int main(int argc, char *argv[])
 	size_t bytes = 0;
 	char *cmd;
 	instruction_t instructions[] = {
-		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap},
-		{"nop", nop}, {NULL, NULL}};
+		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap}, {"nop", nop},
+		{NULL, NULL}
+		};
 
 	/* check if right arguments was passed and open file */
 	initArgs(argc, argv);
