@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int fileFlag = 0;
-
 /**
  * _strchr - replaces a character in a string with another character
  * @str: string to work with
@@ -32,9 +30,10 @@ void _strchr(char *str, char unsetChr, char setChr)
 
 void initArgs(int argc, char *argv[])
 {
+	fileFlag = 0;
 
 	if (argc != 2)
-	{
+	{/* invalid arguments */
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
