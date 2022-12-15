@@ -18,7 +18,7 @@ char *curLine = NULL;
  * Return: 0: interpreted successfully
  * 1: coudn't interpret file
  */
- 
+
 int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
@@ -42,14 +42,14 @@ int main(int argc, char *argv[])
 		ret = getline(&curLine, &bytes, file);
 		/* Add if statement to check for memory error */
 		if (ret == 0)
-			continue;/* empty line */
+			continue; /* empty line */
 		else if (ret == -1)
-			break;/* EOF */
+			break; /* EOF */
 
 		_strchr(curLine, '\n', ' '); /* replace \n with ' ' */
 		cmd = strtok(curLine, " ");
-		if (cmd == NULL)
-		{/*empty line*/
+		if (cmd == NULL) /* empty line */
+		{
 			free(curLine);
 			curLine = NULL;
 			continue;
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 		i = 0;
 		while (instructions[i].opcode != NULL)
 		{
-			if (strcmp(instructions[i].opcode, cmd) == 0)/*opcode found */
+			if (strcmp(instructions[i].opcode, cmd) == 0) /*opcode found */
 			{
 				instructions[i].f(&stack, line_number);
 				break;

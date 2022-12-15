@@ -12,11 +12,16 @@ void stackPush(stack_t **stack, int num)
 	stack_t *newNode, *hold;
 
 	if (stack == NULL)
+	{
 		return;
+	}
 
 	newNode = malloc(sizeof(*newNode));
-	if (newNode == NULL)
-		return;
+	if (newNode == NULL) /* malloc fails */
+	{
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	newNode->n = num;
 	newNode->next = NULL;
 	newNode->prev = NULL;
