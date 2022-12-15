@@ -1,11 +1,15 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+/* define macros for dprintf */
+#define _GNU_SOURCE
+#define _POSIX_C_SOURCE  200809L
 
+/* including stdio.h for FILE type */
+#include <stdio.h>
+
+/* macros */
+/* #define MEMERR STDERR_FILENO, "Error: malloc failed\n" */
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -41,6 +45,32 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* declaring global variables */
+extern FILE *file;
+extern char *curLine;
 
+/**
+ * functions declarations goes here
+ * Name of source code for each function should be above the function.
+ * e.g.
+ * monty.c
+ * int main(int argc, char *argv);
+ */
+
+/*
+ * push.c */
+void push(stack_t **stack, unsigned int line_number);
+
+/* functions.c */
+void _strchr(char *str, char unsetChr, char setChr);
+
+/* stack.h */
+void stackPush(stack_t **stack, int num);
+void stackPop(stack_t **stack);
+void stackFree(stack_t **stack);
+stack_t *getTail(stack_t **stack);
+
+/* pint.c */
+void pint(stack_t **stack, unsigned int line_numeer);
 
 #endif

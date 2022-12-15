@@ -1,0 +1,27 @@
+int main(int ac, char *av)
+{
+	open file
+
+		while (their is a line in the file)
+		{
+			get the current line
+				get the opcode in the line using strtok
+				if the line is empty, continue
+				else if the opcode is wrong, print appropriate error and exit
+					copy the current line to a variable (curLine)
+						the variable should be a globa variable
+						call the appropriate function
+		}
+}
+
+void push(stack_t *stack, unsigned int lineNo)
+{
+	remember that global variable? curLine
+		use strtok to get the argument in curLine
+		if the argument is not an int, print error
+			if it has no argument, print error
+
+				convert argument to int
+					push the int to the stack.
+					free curLine and set it to null
+}
