@@ -1,19 +1,10 @@
 #include "monty.h"
-<<<<<<< HEAD
 
-#include <fcntl.h>
-=======
->>>>>>> origin/abdul
 #include <string.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
-<<<<<<< HEAD
-
-=======
-#include <fcntl.h>
->>>>>>> origin/abdul
 
 void initArgs(int argc, char *argv[]);
 FILE *file;
@@ -45,7 +36,6 @@ int main(int argc, char *argv[])
 	{
 		line_number++;
 		ret = getline(&curLine, &bytes, file);
-<<<<<<< HEAD
 		if (ret == 0) /* empty line */
 			continue; /* go to the next line */
 		else if (ret == -1) /* failure to read a line */
@@ -54,7 +44,6 @@ int main(int argc, char *argv[])
 		cmd = strtok(curLine, " ,\n");
 		if (cmd == NULL) /*empty line*/
 		{
-=======
 		/* Add if statement to check for memory error */
 		if (ret == 0)
 			continue;/* empty line */
@@ -65,7 +54,6 @@ int main(int argc, char *argv[])
 		cmd = strtok(curLine, " ");
 		if (cmd == NULL)
 		{/*empty line*/
->>>>>>> origin/abdul
 			free(curLine);
 			curLine = NULL;
 			continue;
