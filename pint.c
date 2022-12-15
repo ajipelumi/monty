@@ -22,4 +22,7 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	tail = getTail(stack);
 	printf("%i\n", tail->n);
+
+	free(curLine);
+	curLine = NULL;
 }

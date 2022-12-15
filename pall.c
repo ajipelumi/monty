@@ -21,6 +21,9 @@ void pall(stack_t **stack, unsigned int line_number)
 	while (node->prev != NULL)
 	{
 		printf("%d\n", node->n); /* print element */
-		node = node->prev; /* reverse node */
+		node = node->prev; /* go to previous node */
 	}
+
+	free(curLine);
+	curLine = NULL;
 }
