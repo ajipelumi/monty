@@ -18,23 +18,22 @@ char *curLine = NULL;
  * Return: 0: interpreted successfully
  * 1: coudn't interpret file
  */
- 
+
 int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
 	ssize_t ret = 0;
 	int i = 0;
 	unsigned int line_number = 0;
-	size_t bytes = 256;
+	size_t bytes = 0;
 	char *cmd;
 	instruction_t instructions[] = {
-		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
-		{NULL, NULL}};
+		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap},
+		{"nop", nop}, {NULL, NULL}};
 
 	/* check if right arguments was passed and open file */
 	initArgs(argc, argv);
 
-	curLine = malloc(sizeof(char) * bytes); /* allocating memory */
 	/* parsing through file line by line... */
 	while (1) /* loop until eof is encountered */
 	{
@@ -43,14 +42,14 @@ int main(int argc, char *argv[])
 		ret = getline(&curLine, &bytes, file);
 		/* Add if statement to check for memory error */
 		if (ret == 0)
-			continue;/* empty line */
+			continue; /* empty line */
 		else if (ret == -1)
-			break;/* EOF */
+			break; /* EOF */
 
 		_strchr(curLine, '\n', ' '); /* replace \n with ' ' */
 		cmd = strtok(curLine, " ");
-		if (cmd == NULL)
-		{/*empty line*/
+		if (cmd == NULL) /* empty line */
+		{
 			free(curLine);
 			curLine = NULL;
 			continue;
@@ -59,7 +58,7 @@ int main(int argc, char *argv[])
 		i = 0;
 		while (instructions[i].opcode != NULL)
 		{
-			if (strcmp(instructions[i].opcode, cmd) == 0)/*opcode found */
+			if (strcmp(instructions[i].opcode, cmd) == 0) /*opcode found */
 			{
 				instructions[i].f(&stack, line_number);
 				break;
