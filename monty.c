@@ -84,5 +84,6 @@ int main(int argc, char *argv[])
 void postMain(void)
 {
 	free(curLine);
-	fclose(file);
+	if (fileFlag == 1)
+		fclose(file);
 }

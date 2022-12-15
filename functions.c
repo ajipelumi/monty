@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+int fileFlag = 0;
+
 /**
  * _strchr - replaces a character in a string with another character
  * @str: string to work with
@@ -44,4 +46,5 @@ void initArgs(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
+	fileFlag = 1;
 }
