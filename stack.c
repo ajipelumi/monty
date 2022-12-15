@@ -119,6 +119,7 @@ void stackFree(stack_t **stack)
 
 int stackCount(stack_t **stack)
 {
+	stack_t *temp;
 	int count = 0;
 
 	if (stack == NULL || *stack == NULL) /* empty stack */
@@ -126,10 +127,11 @@ int stackCount(stack_t **stack)
 		return (count);
 	}
 
-	while (*stack != NULL)
+	temp = *stack;
+	while (temp != NULL)
 	{
 		count++; /* increase count by 1 */
-		*stack = (*stack)->next; /* go to the next node */
+		temp = temp->next; /* go to the next node */
 	}
 	return (count);
 }
