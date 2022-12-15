@@ -4,7 +4,8 @@
 #include <stdio.h>
 
 /**
- * pall -  prints all the values on the stack, starting from the top of the stack
+ * pall -  prints all the values on the stack, starting
+ * from the top of the stack
  *
  * @stack: stack
  * @line_number: line number to use while printing error
