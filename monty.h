@@ -57,6 +57,9 @@ void pop(stack_t **stack, unsigned int line_number);
 /* pall.c */
 void pall(stack_t **stack, unsigned int line_number);
 
+/* swap.c */
+void swap(stack_t **stack, unsigned int line_number);
+
 /* functions.c */
 void _strchr(char *str, char unsetChr, char setChr);
 
@@ -65,8 +68,12 @@ void stackPush(stack_t **stack, int num);
 void stackPop(stack_t **stack);
 void stackFree(stack_t **stack);
 stack_t *getTail(stack_t **stack);
+int stackCount(stack_t **stack);
 
 /* pint.c */
-void pint(stack_t **stack, unsigned int line_numeer);
+void pint(stack_t **stack, unsigned int line_number);
+
+/* nop.c */
+void nop(stack_t **stack, unsigned int line_number);
 
 #endif
