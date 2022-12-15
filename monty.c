@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 0;
 	size_t bytes = 0;
 	char *cmd;
-	instruction_t instructions[] = {{"push", push}, {"pint", pint}, {NULL, NULL}};
+	instruction_t instructions[] = {{"push", push}, {"pall", pall}, {"pint", pint}, {NULL, NULL}};
 
 	/* check if right arguments was passed and open file */
 	initArgs(argc, argv);

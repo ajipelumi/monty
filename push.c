@@ -35,5 +35,5 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	free(curLine);
-	add_dnodeint_end(stack, num); /* add to list */
+	stackPush(stack, num); /* add to list */
 }
