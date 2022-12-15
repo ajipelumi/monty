@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	char *cmd;
 	instruction_t instructions[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop}, {"swap", swap},
-		{"nop", nop}, {NULL, NULL}};
+		{"nop", nop}, {"add", add}, {NULL, NULL}};
 
 	/* check if right arguments was passed and open file */
 	initArgs(argc, argv);
