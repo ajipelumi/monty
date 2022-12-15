@@ -36,14 +36,7 @@ int main(int argc, char *argv[])
 	{
 		line_number++;
 		ret = getline(&curLine, &bytes, file);
-		if (ret == 0) /* empty line */
-			continue; /* go to the next line */
-		else if (ret == -1) /* failure to read a line */
-			break;
 
-		cmd = strtok(curLine, " ,\n");
-		if (cmd == NULL) /*empty line*/
-		{
 		/* Add if statement to check for memory error */
 		if (ret == 0)
 			continue;/* empty line */
