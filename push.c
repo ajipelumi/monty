@@ -4,7 +4,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <errno.h>
 
 /**
  * push - push a number on the stack
