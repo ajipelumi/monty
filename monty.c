@@ -1,14 +1,23 @@
 #include "monty.h"
+<<<<<<< HEAD
+
+#include <fcntl.h>
+=======
+>>>>>>> origin/abdul
 #include <string.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+<<<<<<< HEAD
+
+=======
 #include <fcntl.h>
+>>>>>>> origin/abdul
 
 void initArgs(int argc, char *argv[]);
 FILE *file;
-	char *curLine = NULL;
+char *curLine = NULL;
 
 /**
  * main - entry point for monty interpreter
@@ -20,10 +29,11 @@ FILE *file;
  */
 int main(int argc, char *argv[])
 {
-	int ret = 0, i = 0;
+	stack_t **stack = NULL;
+	ssize_t ret = 0;
+	int i = 0;
 	unsigned int line_number = 0;
 	size_t bytes = 0;
-	stack_t **stack = NULL;
 	char *cmd;
 	instruction_t instructions[] = {{"push", push}, {"pint", pint}, {NULL, NULL}};
 
@@ -35,6 +45,16 @@ int main(int argc, char *argv[])
 	{
 		line_number++;
 		ret = getline(&curLine, &bytes, file);
+<<<<<<< HEAD
+		if (ret == 0) /* empty line */
+			continue; /* go to the next line */
+		else if (ret == -1) /* failure to read a line */
+			break;
+
+		cmd = strtok(curLine, " ,\n");
+		if (cmd == NULL) /*empty line*/
+		{
+=======
 		/* Add if statement to check for memory error */
 		if (ret == 0)
 			continue;/* empty line */
@@ -45,6 +65,7 @@ int main(int argc, char *argv[])
 		cmd = strtok(curLine, " ");
 		if (cmd == NULL)
 		{/*empty line*/
+>>>>>>> origin/abdul
 			free(curLine);
 			curLine = NULL;
 			continue;
@@ -68,30 +89,34 @@ int main(int argc, char *argv[])
 
 	}
 
-	fclose(file);
+	fclose(file); /* close file before exiting */
 
 	return (EXIT_SUCCESS);
 }
 
 /**
  * initArgs - initialize arguments
+ *
  * @argc: argument count
  * @argv: argument vector
+ *
+ * Return: void
  */
+
 void initArgs(int argc, char *argv[])
 {
 
 	if (argc != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
-			exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
-	/* close file before exiting */
+	/* open file */
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
-			exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 }
