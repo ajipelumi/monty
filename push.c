@@ -44,6 +44,7 @@ void push(stack_t **stack, unsigned int line_number)
  * @stack: stack
  * @line_number: line number to use while printing errors
  */
+
 void pop(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)

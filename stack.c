@@ -9,6 +9,7 @@
  * @stack: stack
  * @num: number to add on the stack
  */
+
 void stackPush(stack_t **stack, int num)
 {
 	stack_t *newNode, *hold;
