@@ -24,7 +24,6 @@ void swap(stack_t **stack, unsigned int line_number)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line_number);
 		stackFree(stack);
-		free(curLine);
 		exit(EXIT_FAILURE);
 	}
 
