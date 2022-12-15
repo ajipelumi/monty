@@ -15,8 +15,8 @@
 
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tail, *temp, *node;
-	int count;
+	stack_t *tail;
+	int count, temp;
 
 	tail = getTail(stack); /* get the last node */
 	count = stackCount(stack);
@@ -28,26 +28,10 @@ void swap(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	if (count == 2) /* only 2 elements on the stack */
-	{
-		temp = tail->prev;
-		temp->prev = tail;
-		tail->next = temp;
-		temp->next = NULL;
-		tail->prev = NULL;
-	}
+	temp = tail->n;
+	tail->n = tail->prev->n;
+	tail->prev->n = temp;
 
-	else /* more than 2 elements on the stack */
-	{
-		temp = tail->prev;
-		node = temp->prev;
-		node->next = tail;
-		tail->prev = node;
-		tail->next = temp;
-		temp->prev = tail;
-		temp->next = NULL;
-	}
-
-	free(curLine);
-	curLine = NULL;
+	/* free(curLine);
+	curLine = NULL; */
 }
