@@ -18,7 +18,6 @@ void add(stack_t **stack, unsigned int line_number)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't add, stack too short\n", line_number);
 		stackFree(stack);
-		free(curLine);
 		exit(EXIT_FAILURE);
 	}
 
