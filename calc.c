@@ -11,7 +11,7 @@
 void add(stack_t **stack, unsigned int line_number)
 {
 	int count, sum;
-	stak_t *tail;
+	stack_t *tail;
 
 	count = stackCount(stack);
 	if (count < 2) /* stack too short */
@@ -19,7 +19,7 @@ void add(stack_t **stack, unsigned int line_number)
 		dprintf(STDERR_FILENO, "L%u: can't add, stack too short", line_number);
 		stackFree(stack);
 		free(curLine);
-		exit(EXIT_FAILURE)
+		exit(EXIT_FAILURE);
 	}
 
 	/* add the last two elements */
