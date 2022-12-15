@@ -28,7 +28,7 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	num = strtol(cmd, &ntr, 10); /* convert string to integer */
-	if (ntr == cmd) /* no digits */
+	if (ntr == cmd || *ntr != '\0') /* no digits */
 	{
 		dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 		stackFree(stack);
