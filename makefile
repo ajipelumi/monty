@@ -1,5 +1,5 @@
 # To add a file, add the file name in the ''ofiles ='' line.
-#  The filename should be in the form .filename.o.
+# The filename should be in the form .filename.o.
 # Then create it's recipe.
 # e.g.
 #.foo.o: monty.h
@@ -8,7 +8,7 @@
 # To compile, you can just use `$ make`.
 # Use `$ make clean` to remove all object files
 
-OFILES = .monty.o .push.o .functions.o .pint.o .stack.o .pall.o
+OFILES = .monty.o .push.o .pall.o .functions.o .pint.o .stack.o
 flags = -Wall -Werror -Wextra -pedantic -std=c89
 
 monty: $(OFILES) monty.h
@@ -22,6 +22,9 @@ monty: $(OFILES) monty.h
 .push.o: push.c monty.h
 	gcc -c $(flags) push.c -o .push.o
 
+.pall.o: pall.c monty.h
+	gcc -c $(flags) pall.c -o .pall.o
+
 .functions.o: functions.c monty.h
 	gcc -c $(flags) functions.c -o .functions.o
 
@@ -30,10 +33,6 @@ monty: $(OFILES) monty.h
 
 .stack.o: stack.c monty.h
 	gcc -c $(flags) stack.c -o .stack.o
-
-
-.pall.o: pall.c monty.h
-	gcc -c $(flags) pall.c -o .pall.o
 
 clean:
 	rm -rf *.o

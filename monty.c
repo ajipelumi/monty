@@ -18,6 +18,7 @@ char *curLine = NULL;
  * Return: 0: interpreted successfully
  * 1: coudn't interpret file
  */
+ 
 int main(int argc, char *argv[])
 {
 	stack_t **stack = NULL;
@@ -26,8 +27,9 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 0;
 	size_t bytes = 0;
 	char *cmd;
+
 	instruction_t instructions[] = {
-		{"push", push}, {"pint", pint}, {"pop", pop},
+		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{NULL, NULL}};
 
 	/* check if right arguments was passed and open file */

@@ -60,6 +60,7 @@ void pall(stack_t **stack, unsigned int line_number);
 /* linked_list.c */
 void *add_dnodeint_end(stack_t **head, int n);
 void free_stack_tlist(stack_t *head);
+
 /* functions.c */
 void _strchr(char *str, char unsetChr, char setChr);
 
