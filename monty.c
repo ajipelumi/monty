@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 	ssize_t ret = 0;
 	int i = 0;
 	unsigned int line_number = 0;
-	size_t bytes = 0;
+	size_t bytes = 256;
 	char *cmd;
 	instruction_t instructions[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
 	/* check if right arguments was passed and open file */
 	initArgs(argc, argv);
 
+	curLine = malloc(sizeof(char) * bytes); /* allocating memory */
 	/* parsing through file line by line... */
 	while (1) /* loop until eof is encountered */
 	{
