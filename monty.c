@@ -9,7 +9,7 @@
 void postMain(void) __attribute__((destructor));
 FILE *file;
 char *curLine = NULL;
-int fileFlag;
+int fileFlag = 0;
 
 /**
  * main - entry point for monty interpreter
