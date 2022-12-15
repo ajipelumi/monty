@@ -31,7 +31,4 @@ void swap(stack_t **stack, unsigned int line_number)
 	temp = tail->n;
 	tail->n = tail->prev->n;
 	tail->prev->n = temp;
-
-	/* free(curLine);
-	curLine = NULL; */
 }
