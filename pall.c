@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 /**
  * pall - prints all the values on the stack, starting
@@ -24,7 +25,26 @@ void pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", node->n); /* print element */
 		node = node->prev; /* go to previous node */
 	}
+}
 
-	free(curLine);
-	curLine = NULL;
+/**
+ * pint - print the number in the top of the stack
+ * @stack: stack
+ * @line_number: line number to use for printing error
+ */
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tail;
+
+	if (stack == NULL || *stack == NULL)
+	{
+		dprintf(STDERR_FILENO, "%u: can't pint, stack empty\n", line_number);
+		stackFree(stack);
+		free(curLine);
+		exit(EXIT_FAILURE);
+	}
+
+	tail = getTail(stack);
+	printf("%i\n", tail->n);
 }

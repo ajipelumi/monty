@@ -8,7 +8,8 @@
 # To compile, you can just use `$ make`.
 # Use `$ make clean` to remove all object files
 
-OFILES = .monty.o .push.o .pall.o .functions.o .pint.o .stack.o .swap.o
+OFILES = .monty.o .push.o .pall.o .functions.o .stack.o .swap.o\
+	 .nop.o
 flags = -Wall -Werror -Wextra -pedantic -std=c89
 
 monty: $(OFILES) monty.h
@@ -28,14 +29,14 @@ monty: $(OFILES) monty.h
 .functions.o: functions.c monty.h
 	gcc -c $(flags) functions.c -o .functions.o
 
-.pint.o: pint.c monty.h
-	gcc -c $(flags) pint.c -o .pint.o
-
 .stack.o: stack.c monty.h
 	gcc -c $(flags) stack.c -o .stack.o
 
 .swap.o: swap.c monty.h
 	gcc -c $(flags) swap.c -o .swap.o
+
+.nop.o: nop.c monty.h
+	gcc -c $(flags) nop.c -o .nop.o
 
 clean:
 	rm -rf *.o

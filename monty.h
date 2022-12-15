@@ -71,6 +71,9 @@ stack_t *getTail(stack_t **stack);
 int stackCount(stack_t **stack);
 
 /* pint.c */
-void pint(stack_t **stack, unsigned int line_numeer);
+void pint(stack_t **stack, unsigned int line_number);
+
+/* nop.c */
+void nop(stack_t **stack, unsigned int line_number);
 
 #endif

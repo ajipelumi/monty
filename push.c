@@ -34,8 +34,6 @@ void push(stack_t **stack, unsigned int line_number)
 		free(curLine);
 		exit(EXIT_FAILURE);
 	}
-	free(curLine);
-	curLine = NULL;
 	stackPush(stack, num); /* add to list */
 }
 
@@ -56,6 +54,4 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 
 	stackPop(stack);
-	free(curLine);
-	curLine = NULL;
 }
