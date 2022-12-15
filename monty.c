@@ -75,6 +75,8 @@ int main(int argc, char *argv[])
 	}
 
 	fclose(file); /* close file before exiting */
+	free(curLine);
+	stackFree(&stack);
 
 	return (EXIT_SUCCESS);
 }
