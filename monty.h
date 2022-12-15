@@ -60,7 +60,7 @@ void pall(stack_t **stack, unsigned int line_number);
 /* functions.c */
 void _strchr(char *str, char unsetChr, char setChr);
 
-/* stack.h */
+/* stack.c */
 void stackPush(stack_t **stack, int num);
 void stackPop(stack_t **stack);
 void stackFree(stack_t **stack);

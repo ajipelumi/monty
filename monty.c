@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 0;
 	size_t bytes = 0;
 	char *cmd;
-
 	instruction_t instructions[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{NULL, NULL}};
@@ -39,8 +38,8 @@ int main(int argc, char *argv[])
 	while (1) /* loop until eof is encountered */
 	{
 		line_number++;
-		ret = getline(&curLine, &bytes, file);
 
+		ret = getline(&curLine, &bytes, file);
 		/* Add if statement to check for memory error */
 		if (ret == 0)
 			continue;/* empty line */
@@ -56,6 +55,7 @@ int main(int argc, char *argv[])
 			continue;
 		}
 
+		i = 0;
 		while (instructions[i].opcode != NULL)
 		{
 			if (strcmp(instructions[i].opcode, cmd) == 0)/*opcode found */
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 			i++;
 			if (instructions[i].opcode == NULL)
 			{
-				dprintf(STDERR_FILENO, "%u: unknown instruction %s\n", line_number, cmd);
+				dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, cmd);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -75,6 +75,8 @@ int main(int argc, char *argv[])
 	}
 
 	fclose(file); /* close file before exiting */
+	free(curLine);
+	stackFree(&stack);
 
 	return (EXIT_SUCCESS);
 }

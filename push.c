@@ -55,4 +55,6 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 
 	stackPop(stack);
+	free(curLine);
+	curLine = NULL;
 }
