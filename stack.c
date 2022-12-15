@@ -108,3 +108,28 @@ void stackFree(stack_t **stack)
 	}
 
 }
+
+/**
+ * stackCount - get the number of elements in stack
+ *
+ * @stack: stack list
+ *
+ * Return: number of elements in the list
+ */
+
+int stackCount(stack_t **stack)
+{
+	int count = 0;
+
+	if (stack == NULL || *stack == NULL) /* empty stack */
+	{
+		return (count);
+	}
+
+	while (*stack != NULL)
+	{
+		count++; /* increase count by 1 */
+		*stack = (*stack)->next; /* go to the next node */
+	}
+	return (count);
+}

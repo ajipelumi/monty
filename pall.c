@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 /**
- * pall -  prints all the values on the stack, starting
+ * pall - prints all the values on the stack, starting
  * from the top of the stack
  *
  * @stack: stack
@@ -19,12 +19,11 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	(void)line_number; /* unused parameter */
 	node = getTail(stack); /* get the top node */
-	while (node->prev != NULL)
+	while (node != NULL)
 	{
 		printf("%d\n", node->n); /* print element */
 		node = node->prev; /* go to previous node */
 	}
-	printf("%d\n", node->n); /* print bottom element on the stack */
 
 	free(curLine);
 	curLine = NULL;
