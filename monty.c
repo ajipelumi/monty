@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{"swap", swap}, {"nop", nop}, {"add", add}, {"sub", sub},
 		{"div", divi}, {"mul", mul}, {"mod", mod}, {"pchar", pchar},
-		{"pstr", pstr}, {NULL, NULL}
+		{"pstr", pstr}, {"rotl", rotl}, {"rotr", rotr}, {NULL, NULL}
 		};
 
 	curLine = malloc(sizeof(char) * bytes);

@@ -67,3 +67,43 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 	putchar('\n'); /* print newline */
 }
+
+/**
+ * rotl - rotates the stack to the top
+ *
+ * @stack: stack
+ * @line_number: line number to use while printing error
+ *
+ * Return: void
+ */
+
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *node;
+
+	(void)line_number; /* unused parameter */
+	node = getTail(stack); /* get top element */
+	node->next = (*stack); /* top becomes last */
+	(*stack)->prev = node;
+	(node->prev)->next = NULL; /* second top element becomes top */
+	node->prev = NULL;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
