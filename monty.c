@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	instruction_t instructions[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{"swap", swap}, {"nop", nop}, {"add", add}, {"sub", sub},
-		{NULL, NULL}
+		{"div", divi}, {NULL, NULL}
 		};
 
 	curLine = malloc(sizeof(char) * bytes);
