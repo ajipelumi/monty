@@ -16,7 +16,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 	stack_t *tail;
 	char c;
 
-	if (stack == NULL || *stack == NULL)
+	if (stack == NULL || *stack == NULL) /* empty stack */
 	{
 		dprintf(STDERR_FILENO, "L%u: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
@@ -24,7 +24,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 	tail = getTail(stack); /* get the last node */
 	c = tail->n; /* convert to character */
-	if (tail->n < 0 && tail->n > 128) /* not ascii value */
+	if (tail->n < 0 || tail->n > 127) /* not ascii range */
 	{
 		dprintf(STDERR_FILENO, "L%u: can't pchar, value out of range\n", line_number);
 		stackFree(stack);
