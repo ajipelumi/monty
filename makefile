@@ -9,7 +9,7 @@
 # Use `$ make clean` to remove all object files
 
 OFILES = .monty.o .push.o .pall.o .functions.o .stack.o .swap.o\
-	 .nop.o .calc.o
+	 .nop.o .calc.o .extra.o
 flags = -Wall -Werror -Wextra -pedantic -std=c89
 
 monty: $(OFILES) monty.h
@@ -40,6 +40,9 @@ monty: $(OFILES) monty.h
 
 .calc.o: calc.c monty.h
 	gcc -c $(flags) calc.c -o .calc.o
+
+.extra.o: extra.c monty.h
+	gcc -c $(flags) extra.c -o .extra.o
 
 clean:
 	rm -rf *.o
