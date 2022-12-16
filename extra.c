@@ -89,21 +89,26 @@ void rotl(stack_t **stack, unsigned int line_number)
 	node->prev = NULL;
 }
 
+/**
+ * rotr - rotates the stack to the bottom
+ *
+ * @stack: stack
+ * @line_number: line number to use while printing error
+ *
+ * Return: void
+ */
 
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *node, *temp;
 
+	(void)line_number; /* unused parameter */
+	temp = *stack; /* get last element */
+	node = getTail(stack); /* get top element */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	*stack = temp->next; /* stack now points to second last element */
+	temp->next = NULL;
+	temp->prev = node;
+	node->next = temp; /* last element becomes top */
+	(*stack)->prev = NULL;
+}
