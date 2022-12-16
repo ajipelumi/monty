@@ -142,7 +142,7 @@ void mod(stack_t **stack, unsigned int line_number)
 	count = stackCount(stack);
 	if (count < 2) /* stack too short */
 	{
-		dprintf(STDERR_FILENO, "L%u: can't mud, stack too short\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't mod, stack too short\n", line_number);
 		stackFree(stack);
 		exit(EXIT_FAILURE);
 	}
