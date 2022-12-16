@@ -54,7 +54,8 @@ int main(int argc, char *argv[])
 		cmd = strtok(curLine, " ");
 		if (cmd == NULL) /* empty line */
 			continue;
-
+		if (cmd[0] == '#') /* treat as comment */
+			continue;
 		i = 0;
 		while (instructions[i].opcode != NULL)
 		{
