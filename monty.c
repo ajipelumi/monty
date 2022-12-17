@@ -7,9 +7,9 @@
 #include <unistd.h>
 
 void postMain(void) __attribute__((destructor));
-FILE *file;
+FILE *file = NULL;
 char *curLine = NULL;
-int fileFlag = 0;
+int queueFlag = 0;
 
 /**
  * main - entry point for monty interpreter
@@ -35,10 +35,10 @@ int main(int argc, char *argv[])
 		{"pstr", pstr}, {"rotl", rotl}, {"rotr", rotr}, {NULL, NULL}
 		};
 
-	curLine = malloc(sizeof(char) * bytes);
 	/* check if right arguments was passed and open file */
 	initArgs(argc, argv);
 
+	curLine = malloc(sizeof(char) * bytes);
 	/* parsing through file line by line... */
 	while (1) /* loop until eof is encountered */
 	{
@@ -88,7 +88,8 @@ int main(int argc, char *argv[])
 
 void postMain(void)
 {
-	free(curLine);
-	if (fileFlag == 1)
+	if (curLine != NULL)
+		free(curLine);
+	if (file != NULL)
 		fclose(file);
 }

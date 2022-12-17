@@ -30,7 +30,6 @@ void _strchr(char *str, char unsetChr, char setChr)
 
 void initArgs(int argc, char *argv[])
 {
-	fileFlag = 0;
 
 	if (argc != 2)
 	{/* invalid arguments */
@@ -45,5 +44,4 @@ void initArgs(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	fileFlag = 1;
 }
