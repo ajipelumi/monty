@@ -15,9 +15,7 @@ void stackPush(stack_t **stack, int num)
 	stack_t *newNode, *hold;
 
 	if (stack == NULL)
-	{
 		return;
-	}
 
 	newNode = malloc(sizeof(*newNode));
 	if (newNode == NULL) /* malloc fails */
@@ -25,12 +23,21 @@ void stackPush(stack_t **stack, int num)
 		dprintf(STDERR_FILENO, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
+
 	newNode->n = num;
 	newNode->next = NULL;
 	newNode->prev = NULL;
 
 	if (*stack == NULL)
 	{ /* stack currently empty */
+		*stack = newNode;
+		return;
+	}
+
+	if (queueFlag == ON)
+	{ /* insert at bottom of stack */
+		newNode->next = *stack;
+		(*stack)->prev = newNode;
 		*stack = newNode;
 		return;
 	}
