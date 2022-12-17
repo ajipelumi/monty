@@ -112,29 +112,21 @@ void rotl(stack_t **stack, unsigned int line_number)
 
 void rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *topHalf, *botHalf;
-	unsigned int len, i = 0;
-	int temp = 0;
+	stack_t *node;
+	int num;
 
 	(void)line_number;
 	if (*stack == NULL)
 		return;
 
-	topHalf = getTail(stack);
-	botHalf = *stack;
+	node = *stack;
 
-	/* find middle of stack */
-	len = stackCount(stack);
-	len /= 2;
-
-	for (i = 0; i < len; ++i)
+	/* move the last element to the top */
+	while (node->next)
 	{
-		/* switch topHalf with botHalf */
-		temp = topHalf->n;
-		topHalf->n = botHalf->n;
-		botHalf->n = temp;
-
-		topHalf = topHalf->prev, botHalf = botHalf->next;
+		num = node->n;
+		node->n = node->next->n;
+		node->next->n = num;
+		node = node->next;
 	}
-
 }
