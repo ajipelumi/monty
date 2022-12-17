@@ -89,8 +89,8 @@ void rotl(stack_t **stack, unsigned int line_number)
 
 	/* store last element on stack */
 	node = getTail(stack); /* get top element */
-	num = node->n;
 
+	/* move the top element to the bottom */
 	while (node->prev)
 	{
 		num = node->n;
@@ -112,15 +112,29 @@ void rotl(stack_t **stack, unsigned int line_number)
 
 void rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *node, *temp;
+	stack_t *topHalf, *botHalf;
+	unsigned int len, i = 0;
+	int temp = 0;
 
-	(void)line_number; /* unused parameter */
-	temp = *stack; /* get last element */
-	node = getTail(stack); /* get top element */
+	(void)line_number;
+	if (*stack == NULL)
+		return;
 
-	*stack = temp->next; /* stack now points to second last element */
-	temp->next = NULL;
-	temp->prev = node;
-	node->next = temp; /* last element becomes top */
-	(*stack)->prev = NULL;
+	topHalf = getTail(stack);
+	botHalf = *stack;
+
+	/* find middle of stack */
+	len = stackCount(stack);
+	len /= 2;
+
+	for (i = 0; i < len; ++i)
+	{
+		/* switch topHalf with botHalf */
+		temp = topHalf->n;
+		topHalf->n = botHalf->n;
+		botHalf->n = temp;
+
+		topHalf = topHalf->prev, botHalf = botHalf->next;
+	}
+
 }
