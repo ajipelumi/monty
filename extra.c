@@ -26,7 +26,8 @@ void pchar(stack_t **stack, unsigned int line_number)
 	c = tail->n; /* convert to character */
 	if (tail->n < 0 || tail->n > 127) /* not ascii range */
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pchar, value out of range\n", line_number);
+		dprintf(STDERR_FILENO,
+				"L%u: can't pchar, value out of range\n", line_number);
 		stackFree(stack);
 		exit(EXIT_FAILURE);
 	}
@@ -80,13 +81,24 @@ void pstr(stack_t **stack, unsigned int line_number)
 void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node;
+	int num;
 
 	(void)line_number; /* unused parameter */
+	if (*stack == NULL)
+		return;
+
+	/* store last element on stack */
 	node = getTail(stack); /* get top element */
-	node->next = (*stack); /* top becomes last */
-	(*stack)->prev = node;
-	(node->prev)->next = NULL; /* second top element becomes top */
-	node->prev = NULL;
+	num = node->n;
+
+	while (node->prev)
+	{
+		num = node->n;
+		node->n = node->prev->n;
+		node->prev->n = num;
+		node = node->prev;
+	}
+
 }
 
 /**
