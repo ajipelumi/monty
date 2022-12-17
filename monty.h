@@ -6,12 +6,14 @@
 #define _POSIX_C_SOURCE  200809L
 
 /* including stdio.h for FILE type */
-#define _GNU_SOURCE
 #include <stdio.h>
 
 /* macros */
 /* #define MEMERR STDERR_FILENO, "Error: malloc failed\n" */
+#define ON 1
+#define OFF 0
 
+/* structures */
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  *
@@ -60,6 +62,8 @@ void pall(stack_t **stack, unsigned int line_number);
 
 /* swap.c */
 void swap(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 
 /* functions.c */
 void _strchr(char *str, char unsetChr, char setChr);
@@ -88,8 +92,8 @@ void mod(stack_t **stack, unsigned int line_number);
 /* extra.c */
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
-void rotl(stack_t **stack, unsigned int line_number);
-void rotr(stack_t **stack, unsigned int line_number);
+void queueMode(stack_t **stack, unsigned int line_number);
+void stackMode(stack_t **stack, unsigned int line_number);
 
 
 #endif

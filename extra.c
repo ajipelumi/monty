@@ -68,3 +68,29 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 	putchar('\n'); /* print newline */
 }
+
+/**
+ * stackMode - changes the mode of the stack to filo
+ * @stack:stack
+ * @line_number: line in file
+ */
+void stackMode(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	(void)stack;
+
+	queueFlag = OFF;
+}
+
+/**
+ * queueMode - sets the stack to queue mode
+ * @stack: stack
+ * @line_number: current line in the monty file
+ */
+void queueMode(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number; /* nullifying unused arguments error */
+	(void)stack;
+
+	queueFlag = ON;
+}
